@@ -190,7 +190,7 @@ export class KamigakariActorSheet extends ActorSheet {
         return;
 
       await this.actor.update({"system.attributes.overflow.value": overflow + add});
-      let chatData = {"content": "Overflow : " + overflow + "->" + (overflow + add) };
+      let chatData = {"content": game.i18n.format("KG.OverflowLog", {old: overflow, new: overflow + add})}; 
       ChatMessage.create(chatData);
     });
 
@@ -356,7 +356,7 @@ export class KamigakariActorSheet extends ActorSheet {
     event.preventDefault();
     
     new Dialog({
-        title: 'Reset Spirit Dice Pool',
+        title: game.i18n.localize("KG.ResetSpiritPoolAlert"),
         content: `
           <h2>${game.i18n.localize("KG.ResetSpiritPoolAlert")}</h2>
         `,
@@ -412,7 +412,7 @@ export class KamigakariActorSheet extends ActorSheet {
     const oriValue = dices[index];
 
     new Dialog({
-        title: 'Use Spirit Dice',
+        title: game.i18n.localize("KG.UseSpiritAlert"),
         content: `
           <h2>${game.i18n.localize("KG.UseSpiritAlert")}</h2>
           <h3 style="text-align: center">${oriValue}</h3>
@@ -443,33 +443,33 @@ export class KamigakariActorSheet extends ActorSheet {
     const oriValue = dices[index];
 
     game.changeDialog = new Dialog({
-      title: game.i18n.localize("Juink.ChangeFateDice"),
+      title: game.i18n.localize("KG.SpiritDiceTitle"),
       content: `
           <h2 style="font-weight: bold; text-align: center;">${game.i18n.localize("KG.ChangeSpiritAlert")}</h2>
-          <div style="display: flex; gap: 6px; justify-content: center;">
-              <img onclick="onChange(1)" src="systems/kamigakari/assets/dice/1.PNG" width=50 height=50>
-              <img onclick="onChange(2)" src="systems/kamigakari/assets/dice/2.PNG" width=50 height=50>
-              <img onclick="onChange(3)" src="systems/kamigakari/assets/dice/3.PNG" width=50 height=50>
-              <img onclick="onChange(4)" src="systems/kamigakari/assets/dice/4.PNG" width=50 height=50>
-              <img onclick="onChange(5)" src="systems/kamigakari/assets/dice/5.PNG" width=50 height=50>
-              <img onclick="onChange(6)" src="systems/kamigakari/assets/dice/6.PNG" width=50 height=50>
+          <div style="display: flex; gap: 6px; justify-content: center;" class="spirit-selector">
+              <img data-ans="1" src="systems/kamigakari/assets/dice/1.PNG" width=50 height=50 style="cursor:pointer">
+              <img data-ans="2" src="systems/kamigakari/assets/dice/2.PNG" width=50 height=50 style="cursor:pointer">
+              <img data-ans="3" src="systems/kamigakari/assets/dice/3.PNG" width=50 height=50 style="cursor:pointer">
+              <img data-ans="4" src="systems/kamigakari/assets/dice/4.PNG" width=50 height=50 style="cursor:pointer">
+              <img data-ans="5" src="systems/kamigakari/assets/dice/5.PNG" width=50 height=50 style="cursor:pointer">
+              <img data-ans="6" src="systems/kamigakari/assets/dice/6.PNG" width=50 height=50 style="cursor:pointer">
           </div>
-          <script>
-          async function onChange(answer) {
-              let document = game.actors.get("${this.document.id}");
-              let dices = duplicate(document.system.attributes.spirit_dice.value);
-              dices[${index}] = answer;
-              await document.update({"system.attributes.spirit_dice.value": dices});
-
-              let context = game.i18n.localize("KG.ChangeSpiritMessage") ;
-              ChatMessage.create({content: context + ": " + ${oriValue} + " -> " + answer, speaker: ChatMessage.getSpeaker({actor: document})});
-              game.changeDialog.close();
-          }
-          </script>
       `,
-      buttons: {}
-    }, {width: "150px"}).render(true);
+      render: (html) => {
+        html.find('.spirit-selector img').on('click', async ev => {
+          const answer = Number(ev.currentTarget.dataset.ans);
+          let dices = foundry.utils.deepClone(this.actor.system.attributes.spirit_dice.value);
+          dices[index] = answer;
+          await this.actor.update({"system.attributes.spirit_dice.value": dices});
 
+          ChatMessage.create({
+            content: game.i18n.format("KG.ChangeSpiritMessage", {old: oriValue, new: answer}),
+            speaker: ChatMessage.getSpeaker({actor: this.actor})
+          });
+          game.changeDialog.close();
+        });
+      }
+    }, {width: "150px"}).render(true);
   }
 
     /* -------------------------------------------- */
@@ -581,14 +581,14 @@ export class KamigakariActorSheet extends ActorSheet {
     event.preventDefault();
     
     new Dialog({
-        title: 'Reset HP',
+        title: game.i18n.localize("KG.ResetHP"),
         content: `
           <h2>${game.i18n.localize("KG.ResetHPAlert")}</h2>
         `,
         buttons: {
           confirm: {
             icon: '<i class="fas fa-check"></i>',
-            label: "Confirm",
+            label: game.i18n.localize("KG.Confirm"),
             callback: async () => {
               await this.actor.update({"system.attributes.hp.value": this.actor.system.attributes.hp.max});
 
@@ -605,14 +605,14 @@ export class KamigakariActorSheet extends ActorSheet {
     event.preventDefault();
     
     new Dialog({
-        title: 'Reset Crest',
+        title: game.i18n.localize("KG.ResetSpirit"),
         content: `
           <h2>${game.i18n.localize("KG.ResetSpiritAlert")}</h2>
         `,
         buttons: {
           confirm: {
             icon: '<i class="fas fa-check"></i>',
-            label: "Confirm",
+            label: game.i18n.localize("KG.Confirm"),
             callback: async () => {
               await this.actor.update({"system.attributes.spirit.value": 22});
 
