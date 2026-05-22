@@ -207,6 +207,7 @@
     "KG.SelectTarget": "탤런트의 대상을 골라주세요.",
     
     "KG.Spiritviewer": "영력 주사위 목록",
+    "KG.Influence": "영향력",
     "KG.InfluenceDialog": "어느 눈과 교환하시겠습니까?",
     "KG.ActionDice": "판정 주사위",
 
@@ -214,6 +215,7 @@
     "KG.Confirm": "확인",
     "KG.Cancel": "취소",
     "KG.Apply": "적용",
+    "KG.Swap": "교환",
     "KG.Select": "선택",
     "KG.SelectActors": "배우 선택",
     "KG.Use": "사용",

@@ -207,6 +207,7 @@
     "KG.SelectTarget": "Select talent's Target",
     
     "KG.Spiritviewer": "Spirit Dice Viewer",
+    "KG.Influence": "Influence",
     "KG.InfluenceDialog": "Choose 2 dices to exchange",
     "KG.ActionDice": "Action Dice",
 
@@ -214,6 +215,7 @@
     "KG.Confirm": "Confirm",
     "KG.Cancel": "Cancel",
     "KG.Apply": "Apply",
+    "KG.Swap": "Swap",
     "KG.Select": "Select",
     "KG.SelectActors": "Select Actors",
     "KG.Use": "Use",

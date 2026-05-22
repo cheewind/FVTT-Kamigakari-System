@@ -13,17 +13,17 @@ export class InfluenceDialog extends Dialog {
         this.spirit = null;
 
         this.data = {
-            title: "Influence",
+            title: game.i18n.localize("KG.Influence"),
             content: this.getContent(),
             buttons: {
                 "cancel": {
                     icon: '<i class="fas fa-times"></i>',
-                    label: "Cancel",
+                    label: game.i18n.localize("KG.Cancel"),
                     callback: () => console.log("Canceled")
                 },
                 "apply": {
                     icon: '<i class="fas fa-check"></i>',
-                    label: "Apply",
+                    label: game.i18n.localize("KG.Apply"),
                     callback: () => this._submit()
                 }
             },
@@ -58,7 +58,7 @@ export class InfluenceDialog extends Dialog {
         for (var i = 0; i < this.spiritDice.length; ++i) {
             content += `<img class="spirit" width=45 height=45 data-key=${i} data-value=${this.spiritDice[i]} src="systems/kamigakari/assets/dice/${this.spiritDice[i]}.PNG">`;
         }
-        content += `</div></div><button type="button" class="dice-change">Change</button><br>`
+        content += `</div></div><button type="button" class="dice-change">${game.i18n.localize("KG.Swap")}</button><br>`
 
         return content;
     }
