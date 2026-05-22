@@ -1,4 +1,3 @@
-
 import { DicesDialog } from "./dices-dialog.js";
 
 export class ActorListDialog extends Dialog {
@@ -9,17 +8,17 @@ export class ActorListDialog extends Dialog {
         this.actors = this.getActors();
 
         this.data = {
-            title: "Select Actors",
+            title: game.i18n.localize("KG.SelectActors"),
             content: this.getContent(),
             buttons: {
                 "cancel": {
                     icon: '<i class="fas fa-times"></i>',
-                    label: "Cancel",
+                    label: game.i18n.localize("KG.Cancel"),
                     callback: () => console.log("Canceled")
                 },
                 "select": {
                     icon: '<i class="fas fa-check"></i>',
-                    label: "Select",
+                    label: game.i18n.localize("KG.Select"),
                     callback: () => this._submit()
                 }
             },

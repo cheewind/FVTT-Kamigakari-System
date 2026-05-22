@@ -185,7 +185,7 @@ export class KamigakariActor extends Actor {
         buttons: {
           confirm: {
             icon: '<i class="fas fa-check"></i>',
-            label: "Confirm",
+            label: game.i18n.localize("KG.Confirm"),
             callback: () => this._doRollDice(a, $("#add").val())
           }
         },
@@ -389,13 +389,11 @@ export class KamigakariActor extends Actor {
           macro.execute();
       else if (item.system.macro != "")
           new Dialog({
-              title: "alert",
-              content: `Do not find this macro: ${item.system.macro}`,
+              title: game.i18n.localize("KG.Alert"),
+              content: game.i18n.format("KG.NoMacroFound", {macro: item.system.macro}),
               buttons: {}
           }).render(true);
-
     }
-  
   }
   
   

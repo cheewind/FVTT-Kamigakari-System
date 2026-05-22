@@ -59,8 +59,8 @@ export class DicesDialog extends Dialog {
 
           if (!actor.isOwner) {
             new Dialog({
-              title: "alert",
-              content: `Not permission`,
+              title: game.i18n.localize("KG.Alert"),
+              content: game.i18n.localize("KG.NotPermission"),
               buttons: {}
             }).render(true);
             return;
@@ -72,7 +72,7 @@ export class DicesDialog extends Dialog {
             return;
 
           await actor.update({"system.attributes.overflow.value": overflow + add});
-          let chatData = {"content": "Overflow : " + overflow + "->" + (overflow + add) };
+          let chatData = { "content": game.i18n.format("KG.OverflowLog", {old: overflow, new: overflow + add}) };
           ChatMessage.create(chatData);
         });
 
@@ -106,7 +106,7 @@ export class DicesDialog extends Dialog {
         event.preventDefault();
 
         new Dialog({
-            title: 'Use Spirit Dice',
+            title: game.i18n.localize("KG.UseSpiritAlert"),
             content: `
               <h2>${actor.name} - ${game.i18n.localize("KG.UseSpiritAlert")}</h2>
               <h3 style="text-align: center">${oriValue}</h3>
@@ -114,7 +114,7 @@ export class DicesDialog extends Dialog {
             buttons: {
               confirm: {
                 icon: '<i class="fas fa-check"></i>',
-                label: "Confirm",
+                label: game.i18n.localize("KG.Confirm"),
                 callback: async () => {
                   var dices = JSON.parse(JSON.stringify(actor.system.attributes.spirit_dice.value));
 
