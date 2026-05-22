@@ -213,11 +213,11 @@ async function chatListeners(html) {
         const buttons = {
             "cancel": {
                 icon: '<i class="fas fa-times"></i>',
-                label: "Cancel"
+                label: game.i18n.localize("KG.Cancel"),
             },
             "use": {
                 icon: '<i class="fas fa-check"></i>',
-                label: "Use",
+                label: game.i18n.localize("KG.Use"),
                 callback: async () => {
                     const actor = game.actors.get(data.actorId);
                     const item = actor.items.get(data.itemId);
@@ -242,8 +242,8 @@ async function chatListeners(html) {
                             macro.execute();
                         else if (item.system.macro != "")
                             new Dialog({
-                                title: "macro",
-                                content: `Do not find this macro: ${item.system.macro}`,
+                                title: game.i18n.localize("KG.Macro"),
+                                content: game.i18n.format("KG.NoMacroFound", {macro: item.system.macro}),
                                 buttons: {}
                             }).render(true);
                     }
@@ -252,14 +252,14 @@ async function chatListeners(html) {
                         confirm();
                     else {
                         new Dialog({
-                            title: 'Select Targets',
+                            title: game.i18n.localize("KG.SelectTargets"),
                             content: `
                               <h2>${game.i18n.localize("KG.SelectTarget")}</h2>
                             `,
                             buttons: {
                                 confirm: {
                                     icon: '<i class="fas fa-check"></i>',
-                                    label: "Confirm",
+                                    label: game.i18n.localize("KG.Confirm"),
                                     callback: async () => {
                                         if (item.system.effect.disable != "-") {
                                             let targets = game.user.targets;
@@ -317,8 +317,8 @@ async function chatListeners(html) {
         let actorId = message.speaker.actor;
         if (actorId == null) {
             new Dialog({
-                title: "alert",
-                content: `You must use actor`,
+                title: game.i18n.localize("KG.Alert"),
+                content: game.i18n.localize("KG.MustUseActorMessage"),
                 buttons: {}
             }).render(true);
             return;
@@ -349,24 +349,24 @@ async function setSpiritDice() {
 
     if (actor == null) {
         new Dialog({
-            title: "alert",
-            content: `You must use actor`,
+            title: game.i18n.localize("KG.Alert"),
+            content: game.i18n.localize("KG.MustUseActorMessage"),
             buttons: {}
         }).render(true);
         return;
     }
 
     new Dialog({
-        title: 'Spirit Dice',
+        title: game.i18n.localize("KG.SpiritDiceTitle"),
         content: `
-            <h2>How many do you want to change to?\n ex) 4, 5</h2>
+            <h2>${game.i18n.localize("KG.SetSpiritDicePrompt")}</h2>
             <div style="margin: 4px 0;"><input type="number" id="dice-num"></div>
             <script>$("#dice-num").focus()</script>
         `,
         buttons: {
             confirm: {
                 icon: '<i class="fas fa-check"></i>',
-                label: "Confirm",
+                label: game.i18n.localize("KG.Confirm"),
                 callback: async () => {
                     var answer = $("#dice-num").val();
 

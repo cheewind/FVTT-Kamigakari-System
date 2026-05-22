@@ -409,7 +409,7 @@ export class KamigakariActor extends Actor {
         buttons: {
           confirm: {
             icon: '<i class="fas fa-check"></i>',
-            label: "Confirm",
+            label: game.i18n.localize("KG.Confirm"),
             callback: async () => {
               var answer = $("#dice-num").val();
 
@@ -536,7 +536,4 @@ export class KamigakariActor extends Actor {
     await this.update({'system.attributes.spirit.value': this.system.attributes.spirit.value - roll.terms[0].total, 'system.attributes.destruction.value': roll.terms[2].total});
 
   }
-
-
-
 }

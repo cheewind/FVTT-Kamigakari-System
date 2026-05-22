@@ -226,6 +226,9 @@
     "KG.NoMacroFound": "Cannot find macro named: {macro}",
     "KG.OverflowLog": "Overflow changed: {old} -> {new}",
     "KG.UseItemLog": "Used Item: {name}",
+    "KG.MustUseActorMessage": "You must select or control an actor to use this feature.",
+    "KG.SpiritDiceTitle": "Spirit Dice",
+    "KG.SetSpiritDicePrompt": "How many do you want to change to?<br>ex) 4, 5",
 
     "SETTINGS.TalentClassify": "Talent Classify",
     "SETTINGS.TalentClassifyDesc": "Talent is classified into race, style, and common.",
