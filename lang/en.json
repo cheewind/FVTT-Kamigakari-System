@@ -254,6 +254,9 @@
     "SETTINGS.TalentBar": "Talent Bar",
     "SETTINGS.TalentBarDesc": "When you show talent and items in the chat window, they are fixed at the bottom.",
 
+    "TYPES.Actor.character": "character",
+    "TYPES.Actor.enemy": "enemy",
+
     "TYPES.Item.talent": "Talent",
     "TYPES.Item.equipment": "Equipment",
     "TYPES.Item.item": "Item",

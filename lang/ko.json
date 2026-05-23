@@ -254,6 +254,9 @@
     "SETTINGS.TalentBar": "탤런트 바",
     "SETTINGS.TalentBarDesc": "탤런트 및 아이템을 채팅창에 보여줬을 때 하단에 고정된다.",
 
+    "TYPES.Actor.character": "플레이어 캐릭터",
+    "TYPES.Actor.enemy": "비플레이어 캐릭터",
+
     "TYPES.Item.talent": "탤런트",
     "TYPES.Item.equipment": "장비",
     "TYPES.Item.item": "아이템",
