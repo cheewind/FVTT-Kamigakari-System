@@ -13,7 +13,7 @@ export class DefenseDialog extends Dialog {
             buttons: {
                 confirm: {
                     icon: '<i class="fas fa-check"></i>',
-                    label: "Confirm",
+                    label: game.i18n.localize("KG.Confirm"),
                     callback: () => {
                         let defense = this.getDefense();
                         DamageController.applyDamage(actor, data.data, defense, data.realDamage, data.recovery);

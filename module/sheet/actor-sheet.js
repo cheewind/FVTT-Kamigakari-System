@@ -363,7 +363,7 @@ export class KamigakariActorSheet extends ActorSheet {
         buttons: {
           confirm: {
             icon: '<i class="fas fa-check"></i>',
-            label: "Confirm",
+            label: game.i18n.localize("KG.Confirm"),
             callback: async () => {
               const dices = JSON.parse(JSON.stringify(this.actor.system.attributes.spirit_dice.value));
 
@@ -420,7 +420,7 @@ export class KamigakariActorSheet extends ActorSheet {
         buttons: {
           confirm: {
             icon: '<i class="fas fa-check"></i>',
-            label: "Confirm",
+            label: game.i18n.localize("KG.Confirm"),
             callback: async () => {
               dices[index] = 0;
               await this.actor.update({"system.attributes.spirit_dice.value": dices});

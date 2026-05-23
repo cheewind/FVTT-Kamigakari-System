@@ -245,12 +245,12 @@ export class TimingHooks {
                         buttons: {
                             confirm: {
                                 icon: '<i class="fas fa-check"></i>',
-                                label: "Confirm",
+                                label: game.i18n.localize("KG.Confirm"),
                                 callback: () => attack.render(true)
                             },
                             cancel: {
                                 icon: '<i class="fas fa-times"></i>',
-                                label: "Cancel",
+                                label: game.i18n.localize("KG.Cancel"),
                                 callback: () => prep.render(true)
                             }
                         }
@@ -377,11 +377,11 @@ export class TimingHooks {
                         buttons: {
                             confirm: {
                                 icon: '<i class="fas fa-check"></i>',
-                                label: "Confirm"
+                                label: game.i18n.localize("KG.Confirm")
                             },
                             cancel: {
                                 icon: '<i class="fas fa-times"></i>',
-                                label: "Cancel",
+                                label: game.i18n.localize("KG.Cancel"),
                                 callback: () => attack.render(true)
                             }
                         }
