@@ -455,6 +455,7 @@ export class KamigakariActorSheet extends ActorSheet {
               <img data-ans="6" src="systems/kamigakari/assets/dice/6.PNG" width=50 height=50 style="cursor:pointer">
           </div>
       `,
+      buttons: {},
       render: (html) => {
         html.find('.spirit-selector img').on('click', async ev => {
           const answer = Number(ev.currentTarget.dataset.ans);
